@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Flower — a book that fits in your pocket</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="flower.css" />
+</head>
+<body>
+
+<!-- B · progress bar as a book line -->
+<div class="progress" id="progress"></div>
+
+<header class="topbar">
+  <span class="wm"><img src="assets/logo/seed-dark.png" alt=""/><span><span class="flow">flow</span><span class="er">er</span></span></span>
+  <nav class="nav">
+    <span class="lang">
+      <button type="button" class="lang-btn on" data-lg="en" aria-pressed="true">EN</button>
+      <span class="lang-sep">/</span>
+      <button type="button" class="lang-btn" data-lg="pl" aria-pressed="false">PL</button>
+    </span>
+    <a href="https://instagram.com/flower.the.reader" aria-label="Instagram"><span class="ig"></span></a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="Hero">
+  <span class="seed seed-big"></span>
+  <span class="seed seed-sm1"></span>
+  <span class="seed seed-sm2"></span>
+
+  <div class="device-wrap reveal">
+    <div class="device"><rsvp-screen theme="paper" wpm="85" accent="#1488d8" lang="en" chrome="on"></rsvp-screen></div>
+  </div>
+
+  <div class="controls reveal" id="heroControls">
+    <label class="ctl"><span data-i18n="ui.wpm">WPM</span><input type="range" class="c-wpm" min="60" max="500" step="5" value="85" aria-label="Words per minute"><b class="c-wpm-val">85</b></label>
+    <span class="ctl"><span data-i18n="ui.theme">Theme</span><span class="seg c-theme"><button type="button" data-th="paper" class="on" aria-label="Paper"></button><button type="button" data-th="dark" aria-label="Dark"></button></span></span>
+    <span class="ctl lt"><span data-i18n="ui.lang">Language</span><button type="button" class="c-lang" data-lg="en">EN</button><button type="button" class="c-lang" data-lg="pl">PL</button></span>
+  </div>
+
+  <h1 class="lead reveal" data-i18n="hero.lead">A book that fits in your&nbsp;pocket.</h1>
+  <p class="sub reveal" data-i18n="hero.sub">Every free moment is another chapter.</p>
+
+  <div class="btnrow reveal">
+    <a class="btn" href="#historia" data-i18n="hero.cta1">See how it started</a>
+    <a class="btn ghost" href="https://instagram.com/flower.the.reader" data-i18n="hero.cta2">Instagram →</a>
+  </div>
+
+  <a class="scrollcue" href="#historia" data-i18n="hero.scrollcue">Chapter 1 ↓</a>
+</section>
+
+<!-- ============ HISTORIA — the book ============ -->
+<section class="book-sec" id="historia" data-screen-label="Story">
+  <div class="book-intro reveal">
+    <span class="kicker" data-i18n="book.kicker">Story</span>
+    <h2 data-i18n="book.h2">Five chapters. How Flower came to be.</h2>
+    <p class="book-hint" data-i18n="book.hint">Turn the pages like a book — or read a chapter the way you'd read it on&nbsp;Flower.</p>
+  </div>
+
+  <div class="book reveal">
+    <button class="arrow arrow-prev" id="prevCh" aria-label="Previous chapter">←</button>
+    <button class="arrow arrow-next" id="nextCh" aria-label="Next chapter">→</button>
+
+    <div class="book-stage" id="stage">
+
+      <article class="page has-photo" data-num="01" data-page="3" data-title="The Queue">
+        <span class="page-bignum">01</span>
+        <span class="page-no" data-i18n="ch1.pageno">p. 3</span>
+        <div class="page-col">
+          <div class="ch-meta" data-i18n="ch1.meta">Chapter one</div>
+          <h3 class="ch-title" data-i18n="ch1.title">The Queue</h3>
+          <div class="ch-body">
+            <p data-i18n="ch1.p1">I was standing in line at the checkout. Four people ahead of me. My phone slipped out of my pocket. TikTok again. I didn't want it, but I scrolled anyway.</p>
+            <p data-i18n="ch1.p2">I had a book in my backpack that I genuinely loved. But pulling it out, opening it, holding it open — that was a whole operation.</p>
+            <p data-i18n="ch1.p3">Then it hit me clearly: I'm not short on time to read. I'm short on a book in my&nbsp;pocket.</p>
+          </div>
+        </div>
+        <figure class="page-photo">
+          <img src="assets/photos/ch1.jpg" alt="Reading a book with a phone in hand" loading="lazy"/>
+          <figcaption data-i18n="ch1.cap">In the queue</figcaption>
+        </figure>
+      </article>
+
+      <article class="page has-photo" data-num="02" data-page="9" data-title="The Idea">
+        <span class="page-bignum">02</span>
+        <span class="page-no" data-i18n="ch2.pageno">p. 9</span>
+        <div class="page-col">
+          <div class="ch-meta" data-i18n="ch2.meta">Chapter two</div>
+          <h3 class="ch-title" data-i18n="ch2.title">The Idea</h3>
+          <div class="ch-body">
+            <p data-i18n="ch2.p1">I stumbled on a simple open-source project. It showed text one word at a time. Ugly — built by programmers, for programmers.</p>
+            <p data-i18n="ch2.p2">But there was something to it. Your eyes don't jump around. You read faster. I remembered that queue and thought: if you packed this into something truly small, something you hold in one hand — everything would change.</p>
+            <p data-i18n="ch2.p3">That thought is where it began.</p>
+          </div>
+        </div>
+        <figure class="page-photo">
+          <img src="assets/photos/ch2.jpg" alt="Thinking about the idea" loading="lazy"/>
+          <figcaption data-i18n="ch2.cap">The idea</figcaption>
+        </figure>
+      </article>
+
+      <article class="page has-photo" data-num="03" data-page="15" data-title="The Board">
+        <span class="page-bignum">03</span>
+        <span class="page-no" data-i18n="ch3.pageno">p. 15</span>
+        <div class="page-col">
+          <div class="ch-meta" data-i18n="ch3.meta">Chapter three</div>
+          <h3 class="ch-title" data-i18n="ch3.title">The Board</h3>
+          <div class="ch-body">
+            <p data-i18n="ch3.p1">I took a Waveshare ESP32-S3. A small board, a good screen. I wrote the software from scratch. Nothing unnecessary.</p>
+            <p data-i18n="ch3.p2">With every decision I asked myself one question: would someone who'd never seen it before know what to do with it right away?</p>
+          </div>
+        </div>
+        <figure class="page-photo">
+          <img src="assets/photos/device-grass-closeup.jpg" alt="Flower with its e-ink screen in the grass" loading="lazy"/>
+          <figcaption data-i18n="ch3.cap">Waveshare ESP32-S3 · e-ink screen</figcaption>
+        </figure>
+      </article>
+
+      <article class="page has-photo" data-num="04" data-page="21" data-title="Flower">
+        <span class="page-bignum">04</span>
+        <span class="page-no" data-i18n="ch4.pageno">p. 21</span>
+        <div class="page-col">
+          <div class="ch-meta" data-i18n="ch4.meta">Chapter four</div>
+          <h3 class="ch-title" data-i18n="ch4.title">Flower</h3>
+          <div class="ch-body">
+            <p data-i18n="ch4.p1">Flower fits in your hand. You hold it with one hand — in a queue, on the tram, anywhere. The text flows word by word. You set the pace. After a moment you forget the device. Only the book is left.</p>
+            <p data-i18n="ch4.p2">You can change the font, the text size, switch on night mode. You turn it off whenever you like and come back to exactly the same spot.</p>
+          </div>
+        </div>
+        <figure class="page-photo">
+          <img src="assets/photos/device-pony.jpg" alt="Flower held in a hand" loading="lazy"/>
+          <figcaption data-i18n="ch4.cap">Flower in hand</figcaption>
+        </figure>
+      </article>
+
+      <article class="page has-photo" data-num="05" data-page="29" data-title="What's Next">
+        <span class="page-bignum">05</span>
+        <span class="page-no" data-i18n="ch5.pageno">p. 29</span>
+        <div class="page-col">
+          <div class="ch-meta" data-i18n="ch5.meta">Chapter five</div>
+          <h3 class="ch-title" data-i18n="ch5.title">What's Next</h3>
+          <div class="ch-body">
+            <p data-i18n="ch5.p1">Flower v1 is ready. We assemble it by hand, one at a time. No fancy box, no manual, for 300&nbsp;zł. We sell it the way we make it — plainly, no nonsense.</p>
+            <p data-i18n="ch5.p2">This is the first version. It works well, but we know it's only the beginning. It's just the two of us — Jan and Karol, in Poland. No office, no investors, no corporate theatre.</p>
+            <p class="ch-credo" data-i18n="ch5.credo">Because we believe every moment can be a chapter.</p>
+          </div>
+        </div>
+        <figure class="page-photo">
+          <img src="assets/photos/karol-woodpile.jpg" alt="Karol reading on Flower" loading="lazy"/>
+          <figcaption data-i18n="ch5.cap">Karol</figcaption>
+        </figure>
+      </article>
+
+      <!-- A · read this chapter like on Flower -->
+      <div class="rsvp-mode" id="rsvpMode">
+        <div class="rsvp-inner">
+          <div class="rsvp-label" id="rsvpLabel" data-i18n="rsvp.label">Chapter one · The Queue</div>
+          <div class="device device--rsvp"><rsvp-screen theme="paper" wpm="210" accent="#1488d8" chrome="on"></rsvp-screen></div>
+          <div class="rsvp-controls" id="rsvpControls">
+            <label class="ctl"><span data-i18n="ui.wpm">WPM</span><input type="range" class="c-wpm" min="60" max="500" step="5" value="210" aria-label="Words per minute"><b class="c-wpm-val">210</b></label>
+            <span class="ctl"><span data-i18n="ui.theme">Theme</span><span class="seg c-theme"><button type="button" data-th="paper" class="on" aria-label="Paper"></button><button type="button" data-th="eink" aria-label="E-ink"></button><button type="button" data-th="dark" aria-label="Dark"></button></span></span>
+            <button type="button" class="c-play" id="rsvpPlay" data-i18n="rsvp.pause">Pause</button>
+          </div>
+          <button class="rsvp-back" id="rsvpBack" data-i18n="rsvp.back">← Back to text</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="book-bar reveal">
+    <nav class="rail" id="rail">
+      <button data-i="0"><b>01</b> <span data-i18n="rail.1">The Queue</span></button>
+      <button data-i="1"><b>02</b> <span data-i18n="rail.2">The Idea</span></button>
+      <button data-i="2"><b>03</b> <span data-i18n="rail.3">The Board</span></button>
+      <button data-i="3"><b>04</b> <span data-i18n="rail.4">Flower</span></button>
+      <button data-i="4"><b>05</b> <span data-i18n="rail.5">What's Next</span></button>
+    </nav>
+    <button class="read-flower" id="readFlower" data-i18n="read.flower">Read this chapter the way it reads on Flower →</button>
+  </div>
+</section>
+
+<!-- ============ FORM ============ -->
+<section class="signup" id="zapis" data-screen-label="Sign up">
+  <span class="seed seed-form"></span>
+  <div class="signup-col reveal">
+    <span class="kicker" data-i18n="su.kicker">Next batch</span>
+    <h2 data-i18n="su.h2">We make few. One at a time.</h2>
+    <p data-i18n="su.p">We build Flower by hand. Leave your email — we'll write when the next one is&nbsp;ready.</p>
+
+    <form class="form-box" id="signupForm" novalidate>
+      <label for="email" data-i18n="su.label">Your email</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" data-i18n-ph="su.ph"/>
+      <button type="submit" id="signupBtn" data-i18n="su.btn">Let me know</button>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
+    </form>
+
+    <a class="form-ig" href="https://instagram.com/flower.the.reader" data-i18n="su.ig">Or follow along on Instagram → @flower.the.reader</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot" data-screen-label="Footer">
+  <div class="foot-top">
+    <span class="wm wm-dark"><img src="assets/logo/seed-white.png" alt=""/><span><span class="flow">flow</span><span class="er">er</span></span></span>
+    <p class="foot-made" data-i18n="foot.made">Handmade by Jan and Karol in&nbsp;Poland.</p>
+  </div>
+
+  <div class="makers">
+    <div class="maker"><b>Karol</b><span data-i18n="foot.karol">system, software</span></div>
+    <div class="maker"><b>Jan</b><span data-i18n="foot.jan">marketing, assembly, Instagram</span></div>
+  </div>
+
+  <nav class="foot-links">
+    <a href="mailto:flower.thereader@gmail.com" data-i18n="foot.email">E-mail</a>
+    <a href="https://instagram.com/flower.the.reader" data-i18n="foot.ig">Instagram</a>
+    <a href="polityka.html" data-i18n="foot.privacy">Privacy policy</a>
+  </nav>
+
+  <div class="foot-base" data-i18n="foot.base">© 2026 Flower</div>
+</footer>
+
+<script src="rsvp-screen.js"></script>
+<script src="i18n.js"></script>
+<script src="flower.js"></script>
+</body>
+</html>
