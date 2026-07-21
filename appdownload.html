@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Flower — get the app</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ===========================================================
+   Flower — "appdownload" (get-the-app) page.
+   Samodzielny plik (własny <style>/<script>, zero zależności od
+   flower.css / i18n.js / flower.js) — ale DZIELI folder assets/
+   z resztą strony, bo faktycznie tam mieszka, więc obrazki logo
+   ładujemy zwykłymi względnymi ścieżkami (tak jak index.html),
+   zamiast base64 — to samo repo, ten sam folder, ma to sens.
+   Nie podlinkowana z index.html.
+   =========================================================== */
+:root{
+  --paper-top:#ece5d7; --paper-mid:#f0e9dd; --paper-bot:#f5f0e7;
+  --sheet:#f8f4ec; --ink:#1f1d1a; --ink2:#6b665d; --ink3:#9a948a;
+  --deep:#0c1119; --blue:#1488d8; --blue-soft:#5db4ee;
+  --green:#2f7a4d; --green-soft:#7cc295; --sage:#aebfa6;
+  --line:rgba(31,29,26,.14);
+  --fr:'Fraunces',Georgia,serif; --ns:'Newsreader',Georgia,serif; --mn:'JetBrains Mono',monospace;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; color:var(--ink); font-family:var(--ns);
+  background:linear-gradient(180deg, var(--paper-top) 0%, var(--paper-mid) 30%, var(--paper-bot) 100%);
+  background-attachment:fixed; -webkit-font-smoothing:antialiased; position:relative; overflow-x:hidden; }
+
+/* seed — sama grafika logo, przyciemniona/dopasowana kolorem (jak na
+   stronie głównej: maska z seed-dark.png, tło w kolorze --sage) */
+.seed{ position:absolute; z-index:0; pointer-events:none;
+  -webkit-mask:url('assets/logo/seed-dark.png') center/contain no-repeat;
+  mask:url('assets/logo/seed-dark.png') center/contain no-repeat; }
+.seed.b1{ width:460px; height:460px; left:-150px; top:-120px; opacity:.28; background:var(--sage); }
+.seed.b2{ width:260px; height:260px; right:-90px; bottom:8%; opacity:.18; background:#9fb6c9; }
+
+.topbar{ position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center;
+  padding:30px clamp(24px,5vw,64px); }
+.wm{ display:flex; align-items:center; gap:10px; font-family:var(--fr); font-weight:500;
+  font-size:22px; letter-spacing:-.01em; text-decoration:none; }
+.wm img{ width:24px; height:24px; display:block; }
+.wm .flow{ color:var(--blue); } .wm .er{ color:var(--green); }
+.lang{ display:inline-flex; align-items:center; gap:7px; font-family:var(--mn); font-size:13px; }
+.lang-btn{ font-family:var(--mn); font-size:13px; letter-spacing:.04em; color:var(--ink2);
+  background:none; border:none; cursor:pointer; padding:4px 2px; }
+.lang-btn.on{ color:var(--ink); font-weight:700; }
+.lang-sep{ opacity:.4; }
+
+.app-sec{ position:relative; z-index:2; max-width:680px; margin:0 auto;
+  padding:clamp(40px,8vh,90px) clamp(22px,5vw,40px) clamp(70px,10vh,110px); text-align:center; }
+.kicker{ font-family:var(--mn); font-size:13px; letter-spacing:.18em; text-transform:uppercase; color:var(--green); }
+.app-sec h1{ font-family:var(--fr); font-weight:300; font-size:clamp(30px,5vw,48px); line-height:1.1;
+  letter-spacing:-.02em; margin:16px 0 0; text-wrap:balance; }
+.app-sec p.lead{ margin:16px auto 0; color:var(--ink2); font-size:17px; line-height:1.55; max-width:50ch; }
+
+.steps{ margin:44px 0 0; text-align:left; display:flex; flex-direction:column; }
+.step{ display:flex; gap:18px; padding:20px 0; border-top:1px solid var(--line); }
+.step:last-child{ border-bottom:1px solid var(--line); }
+.step b{ font-family:var(--fr); font-weight:400; font-size:26px; color:var(--blue); flex:0 0 auto; width:1.3ch; }
+.step p{ margin:0; font-size:16px; line-height:1.55; color:#2b2823; padding-top:3px; }
+
+.get-app{ margin:40px 0 0; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.qr-box{ width:160px; height:160px; background:#fffdf8; border:1px solid var(--ink2);
+  display:grid; place-items:center; font-family:var(--mn); font-size:11px; letter-spacing:.05em;
+  color:var(--ink3); text-align:center; padding:10px; line-height:1.4; }
+.btn{ font-family:var(--mn); font-size:13.5px; letter-spacing:.02em; padding:14px 22px;
+  border:1px solid var(--ink); color:var(--ink); background:none; text-decoration:none;
+  display:inline-block; cursor:pointer; transition:background .25s, color .25s; }
+.btn:hover{ background:var(--ink); color:var(--paper-bot); }
+.btn.disabled{ opacity:.45; pointer-events:none; }
+.note{ font-family:var(--mn); font-size:12px; letter-spacing:.02em; color:var(--ink3); }
+
+.ios-note{ margin:48px auto 0; max-width:50ch; padding:20px; background:#fffdf8;
+  border:1px solid var(--line); font-size:14.5px; line-height:1.55; color:var(--ink2); text-align:left; }
+.ios-note b{ color:var(--ink); }
+
+.foot{ position:relative; z-index:2; background:var(--deep); color:#e9ebe6;
+  padding:clamp(40px,6vh,60px) clamp(24px,5vw,64px) 32px; display:flex; flex-direction:column; gap:18px; }
+.foot .wm .flow{ color:var(--blue-soft); } .foot .wm .er{ color:var(--green-soft); }
+.foot-links{ display:flex; gap:24px; flex-wrap:wrap; font-family:var(--mn); font-size:13px; }
+.foot-links a{ color:#b9bdc4; text-decoration:none; }
+.foot-links a:hover{ color:#fff; }
+.foot-base{ font-family:var(--mn); font-size:11px; letter-spacing:.1em; color:#5b6472; }
+
+@media (max-width:600px){
+  .topbar{ padding:18px 20px; }
+  .app-sec{ padding:30px 18px 60px; }
+  .qr-box{ width:140px; height:140px; }
+  .get-app .btn{ width:100%; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<span class="seed b1"></span>
+<span class="seed b2"></span>
+
+<header class="topbar">
+  <a href="index.html" class="wm"><img src="assets/logo/seed-dark.png" alt=""/><span><span class="flow">flow</span><span class="er">er</span></span></a>
+  <span class="lang">
+    <button type="button" class="lang-btn on" data-lg="en">EN</button>
+    <span class="lang-sep">/</span>
+    <button type="button" class="lang-btn" data-lg="pl">PL</button>
+  </span>
+</header>
+
+<section class="app-sec">
+  <span class="kicker" data-t="kicker">App</span>
+  <h1 data-t="h1">Connect Flower to your phone.</h1>
+  <p class="lead" data-t="lead">Send books, change settings, update the firmware — all from your phone. No Google Play, no App Store. Install it straight from this page.</p>
+
+  <div class="steps">
+    <div class="step"><b>1</b><p data-t="step1">Scan the QR code with your phone's camera, or tap the button below.</p></div>
+    <div class="step"><b>2</b><p data-t="step2">Install the app. Android may warn about installing from outside the Play Store — that's expected, just confirm.</p></div>
+    <div class="step"><b>3</b><p data-t="step3">On the reader: Settings → Connect app. Join the Wi-Fi network that shows up on your phone.</p></div>
+    <div class="step"><b>4</b><p data-t="step4">Open the Flower app — it finds your reader automatically.</p></div>
+  </div>
+
+  <div class="get-app">
+    <!-- TODO(Karol/Claude): podmienić na prawdziwy kod QR + link do
+         podpisanego APK, kiedy Faza 5 (docs/roadmap.md w czytnik01) będzie
+         gotowa — publikacja .apk jako asset w GitHub Releases. Do tego
+         czasu przycisk celowo jest disabled/"coming soon", bo nie ma
+         jeszcze czego linkować. -->
+    <div class="qr-box" data-t="qr">QR code coming soon</div>
+    <a class="btn disabled" href="#" data-t="download">Download for Android (coming soon)</a>
+    <p class="note" data-t="note">Free, no account needed. ~5&nbsp;MB.</p>
+  </div>
+
+  <div class="ios-note">
+    <p data-t="ios"><b>iPhone:</b> for now, use the browser version — open Flower's Wi-Fi address directly in Safari. A native iOS app is on the way.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <span class="wm"><img src="assets/logo/seed-white.png" alt=""/><span><span class="flow">flow</span><span class="er">er</span></span></span>
+  <nav class="foot-links">
+    <a href="index.html" data-t="backHome">← Back to flower</a>
+    <a href="mailto:flower.thereader@gmail.com">E-mail</a>
+  </nav>
+  <div class="foot-base">© 2026 Flower</div>
+</footer>
+
+<script>
+  // Mini i18n, świadomie własny i niezależny od i18n.js reszty strony —
+  // ta strona ma zero zależności od innych plików JS.
+  var STR = {
+    en: {
+      kicker: "App",
+      h1: "Connect Flower to your phone.",
+      lead: "Send books, change settings, update the firmware — all from your phone. No Google Play, no App Store. Install it straight from this page.",
+      step1: "Scan the QR code with your phone's camera, or tap the button below.",
+      step2: "Install the app. Android may warn about installing from outside the Play Store — that's expected, just confirm.",
+      step3: "On the reader: Settings → Connect app. Join the Wi-Fi network that shows up on your phone.",
+      step4: "Open the Flower app — it finds your reader automatically.",
+      qr: "QR code coming soon",
+      download: "Download for Android (coming soon)",
+      note: "Free, no account needed. ~5 MB.",
+      ios: "<b>iPhone:</b> for now, use the browser version — open Flower's Wi-Fi address directly in Safari. A native iOS app is on the way.",
+      backHome: "← Back to flower"
+    },
+    pl: {
+      kicker: "Aplikacja",
+      h1: "Połącz Flower z telefonem.",
+      lead: "Wysyłaj książki, zmieniaj ustawienia, aktualizuj firmware — wszystko z telefonu. Bez Google Play, bez App Store. Instalujesz ją bezpośrednio z tej strony.",
+      step1: "Zeskanuj kod QR aparatem telefonu albo kliknij przycisk poniżej.",
+      step2: "Zainstaluj aplikację. Android może ostrzec przed instalacją spoza Sklepu Play — to normalne, po prostu potwierdź.",
+      step3: "Na czytniku: Ustawienia → Połącz z aplikacją. Połącz telefon z siecią WiFi, która się pojawi.",
+      step4: "Otwórz aplikację Flower — sama znajdzie czytnik.",
+      qr: "Kod QR wkrótce",
+      download: "Pobierz na Androida (wkrótce)",
+      note: "Za darmo, bez konta. ~5 MB.",
+      ios: "<b>iPhone:</b> na razie korzystaj z wersji przeglądarkowej — otwórz adres WiFi czytnika bezpośrednio w Safari. Natywna appka na iOS jest w drodze.",
+      backHome: "← Wróć do flower"
+    }
+  };
+
+  function apply(lang) {
+    var d = STR[lang] || STR.en;
+    document.documentElement.setAttribute("lang", lang);
+    document.querySelectorAll("[data-t]").forEach(function (el) {
+      var key = el.getAttribute("data-t");
+      if (!(key in d)) return;
+      el.innerHTML = d[key];
+    });
+    document.querySelectorAll(".lang-btn").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-lg") === lang);
+    });
+    try { localStorage.setItem("flower_lang", lang); } catch (e) {}
+  }
+
+  document.querySelectorAll(".lang-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () { apply(btn.getAttribute("data-lg")); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem("flower_lang"); } catch (e) {}
+  var browserPl = (navigator.language || "").toLowerCase().indexOf("pl") === 0;
+  apply(saved || (browserPl ? "pl" : "en"));
+</script>
+</body>
+</html>
