@@ -66,9 +66,6 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
 .step p{ margin:0; font-size:16px; line-height:1.55; color:#2b2823; padding-top:3px; }
 
 .get-app{ margin:40px 0 0; display:flex; flex-direction:column; align-items:center; gap:14px; }
-.qr-box{ width:160px; height:160px; background:#fffdf8; border:1px solid var(--ink2);
-  display:grid; place-items:center; font-family:var(--mn); font-size:11px; letter-spacing:.05em;
-  color:var(--ink3); text-align:center; padding:10px; line-height:1.4; }
 .btn{ font-family:var(--mn); font-size:13.5px; letter-spacing:.02em; padding:14px 22px;
   border:1px solid var(--ink); color:var(--ink); background:none; text-decoration:none;
   display:inline-block; cursor:pointer; transition:background .25s, color .25s; }
@@ -102,7 +99,6 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
 @media (max-width:600px){
   .topbar{ padding:18px 20px; }
   .app-sec{ padding:30px 18px 60px; }
-  .qr-box{ width:140px; height:140px; }
   .get-app .btn{ width:100%; text-align:center; }
 }
 </style>
@@ -127,14 +123,13 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
   <p class="lead" data-t="lead">Send books, change settings, update the firmware — all from your phone. No Google Play, no App Store. Install it straight from this page.</p>
 
   <div class="steps">
-    <div class="step"><b>1</b><p data-t="step1">Scan the QR code with your phone's camera, or tap the button below.</p></div>
+    <div class="step"><b>1</b><p data-t="step1">Tap the download button below.</p></div>
     <div class="step"><b>2</b><p data-t="step2">Install the app. Android may warn about installing from outside the Play Store — that's expected, just confirm.</p></div>
     <div class="step"><b>3</b><p data-t="step3">On the reader: Settings → Connect app. Join the Wi-Fi network that shows up on your phone.</p></div>
     <div class="step"><b>4</b><p data-t="step4">Open the Flower app — it finds your reader automatically.</p></div>
   </div>
 
   <div class="get-app">
-    <div class="qr-box" data-t="qr">QR code coming soon</div>
     <a
       class="btn"
       href="https://github.com/GRKarol/czytnik01/releases/download/v0.3.8/flower-android-v1.0.2.apk"
@@ -168,11 +163,10 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
       kicker: "App",
       h1: "Connect Flower to your phone.",
       lead: "Send books, change settings, update the firmware — all from your phone. No Google Play, no App Store. Install it straight from this page.",
-      step1: "Scan the QR code with your phone's camera, or tap the button below.",
+      step1: "Tap the download button below.",
       step2: "Install the app. Android may warn about installing from outside the Play Store — that's expected, just confirm.",
       step3: "On the reader: Settings → Connect app. Join the Wi-Fi network that shows up on your phone.",
       step4: "Open the Flower app — it finds your reader automatically.",
-      qr: "QR code coming soon",
       download: "Download for Android",
       note: "Free, no account needed. ~4.4 MB.",
       iosSummary: "iPhone / iOS — how it works (no app to install)",
@@ -189,11 +183,10 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
       kicker: "Aplikacja",
       h1: "Połącz Flower z telefonem.",
       lead: "Wysyłaj książki, zmieniaj ustawienia, aktualizuj firmware — wszystko z telefonu. Bez Google Play, bez App Store. Instalujesz ją bezpośrednio z tej strony.",
-      step1: "Zeskanuj kod QR aparatem telefonu albo kliknij przycisk poniżej.",
+      step1: "Kliknij przycisk pobierania poniżej.",
       step2: "Zainstaluj aplikację. Android może ostrzec przed instalacją spoza Sklepu Play — to normalne, po prostu potwierdź.",
       step3: "Na czytniku: Ustawienia → Połącz z aplikacją. Połącz telefon z siecią WiFi, która się pojawi.",
       step4: "Otwórz aplikację Flower — sama znajdzie czytnik.",
-      qr: "Kod QR wkrótce",
       download: "Pobierz na Androida",
       note: "Za darmo, bez konta. ~4.4 MB.",
       iosSummary: "iPhone / iOS — jak to działa (bez instalowania appki)",
