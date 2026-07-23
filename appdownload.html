@@ -123,14 +123,15 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
   </div>
 
   <div class="get-app">
-    <!-- TODO(Karol/Claude): podmienić na prawdziwy kod QR + link do
-         podpisanego APK, kiedy Faza 5 (docs/roadmap.md w czytnik01) będzie
-         gotowa — publikacja .apk jako asset w GitHub Releases. Do tego
-         czasu przycisk celowo jest disabled/"coming soon", bo nie ma
-         jeszcze czego linkować. -->
     <div class="qr-box" data-t="qr">QR code coming soon</div>
-    <a class="btn disabled" href="#" data-t="download">Download for Android (coming soon)</a>
-    <p class="note" data-t="note">Free, no account needed. ~5&nbsp;MB.</p>
+    <a
+      class="btn"
+      href="https://github.com/GRKarol/czytnik01/releases/download/v0.3.7/flower-android-v1.0.apk"
+      download
+      data-t="download"
+      >Download for Android</a
+    >
+    <p class="note" data-t="note">Free, no account needed. ~4.4&nbsp;MB.</p>
   </div>
 
   <div class="ios-note">
@@ -160,8 +161,8 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
       step3: "On the reader: Settings → Connect app. Join the Wi-Fi network that shows up on your phone.",
       step4: "Open the Flower app — it finds your reader automatically.",
       qr: "QR code coming soon",
-      download: "Download for Android (coming soon)",
-      note: "Free, no account needed. ~5 MB.",
+      download: "Download for Android",
+      note: "Free, no account needed. ~4.4 MB.",
       ios: "<b>iPhone:</b> for now, use the browser version — open Flower's Wi-Fi address directly in Safari. A native iOS app is on the way.",
       backHome: "← Back to flower"
     },
@@ -174,8 +175,8 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
       step3: "Na czytniku: Ustawienia → Połącz z aplikacją. Połącz telefon z siecią WiFi, która się pojawi.",
       step4: "Otwórz aplikację Flower — sama znajdzie czytnik.",
       qr: "Kod QR wkrótce",
-      download: "Pobierz na Androida (wkrótce)",
-      note: "Za darmo, bez konta. ~5 MB.",
+      download: "Pobierz na Androida",
+      note: "Za darmo, bez konta. ~4.4 MB.",
       ios: "<b>iPhone:</b> na razie korzystaj z wersji przeglądarkowej — otwórz adres WiFi czytnika bezpośrednio w Safari. Natywna appka na iOS jest w drodze.",
       backHome: "← Wróć do flower"
     }
