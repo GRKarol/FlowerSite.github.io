@@ -27,7 +27,7 @@
   --fr:'Fraunces',Georgia,serif; --ns:'Newsreader',Georgia,serif; --mn:'JetBrains Mono',monospace;
 }
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overflow-x:hidden; max-width:100%; }
 body{ margin:0; color:var(--ink); font-family:var(--ns);
   background:linear-gradient(180deg, var(--paper-top) 0%, var(--paper-mid) 30%, var(--paper-bot) 100%);
   background-attachment:fixed; -webkit-font-smoothing:antialiased; position:relative; overflow-x:hidden; }
@@ -76,9 +76,20 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
 .btn.disabled{ opacity:.45; pointer-events:none; }
 .note{ font-family:var(--mn); font-size:12px; letter-spacing:.02em; color:var(--ink3); }
 
-.ios-note{ margin:48px auto 0; max-width:50ch; padding:20px; background:#fffdf8;
+.ios-note{ margin:48px auto 0; max-width:50ch; padding:4px 20px; background:#fffdf8;
   border:1px solid var(--line); font-size:14.5px; line-height:1.55; color:var(--ink2); text-align:left; }
-.ios-note b{ color:var(--ink); }
+.ios-note summary{ padding:16px 0; cursor:pointer; list-style:none; color:var(--ink);
+  font-family:var(--fr); font-size:16px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.ios-note summary::-webkit-details-marker{ display:none; }
+.ios-note summary::after{ content:'+'; font-family:var(--mn); font-size:18px; color:var(--ink3);
+  flex:0 0 auto; transition:transform .2s; }
+.ios-note[open] summary::after{ content:'−'; }
+.ios-note[open] summary{ border-bottom:1px solid var(--line); }
+.ios-body{ padding:18px 0 20px; }
+.ios-body ol{ margin:0; padding:0 0 0 1.3em; display:flex; flex-direction:column; gap:12px; }
+.ios-body li::marker{ font-family:var(--mn); color:var(--blue); font-size:13px; }
+.ios-body b{ color:var(--ink); }
+.ios-body p.note2{ margin:14px 0 0; font-size:13px; color:var(--ink3); }
 
 .foot{ position:relative; z-index:2; background:var(--deep); color:#e9ebe6;
   padding:clamp(40px,6vh,60px) clamp(24px,5vw,64px) 32px; display:flex; flex-direction:column; gap:18px; }
@@ -126,7 +137,7 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
     <div class="qr-box" data-t="qr">QR code coming soon</div>
     <a
       class="btn"
-      href="https://github.com/GRKarol/czytnik01/releases/download/v0.3.8/flower-android-v1.0.1.apk"
+      href="https://github.com/GRKarol/czytnik01/releases/download/v0.3.8/flower-android-v1.0.2.apk"
       download
       data-t="download"
       >Download for Android</a
@@ -134,9 +145,10 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
     <p class="note" data-t="note">Free, no account needed. ~4.4&nbsp;MB.</p>
   </div>
 
-  <div class="ios-note">
-    <p data-t="ios"><b>iPhone:</b> for now, use the browser version — open Flower's Wi-Fi address directly in Safari. A native iOS app is on the way.</p>
-  </div>
+  <details class="ios-note">
+    <summary data-t="iosSummary">iPhone / iOS — how it works (no app to install)</summary>
+    <div class="ios-body" data-t="iosBody"></div>
+  </details>
 </section>
 
 <footer class="foot">
@@ -163,7 +175,14 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
       qr: "QR code coming soon",
       download: "Download for Android",
       note: "Free, no account needed. ~4.4 MB.",
-      ios: "<b>iPhone:</b> for now, use the browser version — open Flower's Wi-Fi address directly in Safari. A native iOS app is on the way.",
+      iosSummary: "iPhone / iOS — how it works (no app to install)",
+      iosBody: "<ol>" +
+        "<li>On the reader: go to <b>Settings → Connect app</b>. It shows a Wi-Fi network name starting with <b>Flower-</b>.</li>" +
+        "<li>On your iPhone: open <b>Settings → Wi-Fi</b> and join that network.</li>" +
+        "<li>Open <b>Safari</b> and type the address shown on the reader's screen directly into the address bar (usually <b>http://192.168.4.1</b>) — don't search for it, type it exactly.</li>" +
+        "<li>You'll land on Flower's own page, served directly by the reader — from there you can send books, change settings, and update the firmware.</li>" +
+        "<li>Optional: tap <b>Share → Add to Home Screen</b> for a quick-access icon. It still only works while your iPhone is on the reader's Wi-Fi.</li>" +
+        "</ol><p class=\"note2\">While connected to the reader's Wi-Fi, your iPhone has no regular internet — that's expected. Switch back to your home Wi-Fi afterwards.</p>",
       backHome: "← Back to flower"
     },
     pl: {
@@ -177,7 +196,14 @@ body{ margin:0; color:var(--ink); font-family:var(--ns);
       qr: "Kod QR wkrótce",
       download: "Pobierz na Androida",
       note: "Za darmo, bez konta. ~4.4 MB.",
-      ios: "<b>iPhone:</b> na razie korzystaj z wersji przeglądarkowej — otwórz adres WiFi czytnika bezpośrednio w Safari. Natywna appka na iOS jest w drodze.",
+      iosSummary: "iPhone / iOS — jak to działa (bez instalowania appki)",
+      iosBody: "<ol>" +
+        "<li>Na czytniku wejdź w <b>Ustawienia → Połącz z aplikacją</b>. Pokaże się nazwa sieci WiFi zaczynająca się od <b>Flower-</b>.</li>" +
+        "<li>Na iPhonie wejdź w <b>Ustawienia → WiFi</b> i połącz się z tą siecią.</li>" +
+        "<li>Otwórz <b>Safari</b> i wpisz bezpośrednio w pasku adresu to, co pokazuje ekran czytnika (zwykle <b>http://192.168.4.1</b>) — nie wyszukuj tego, wpisz dokładnie ten adres.</li>" +
+        "<li>Zobaczysz własną stronę czytnika, serwowaną bezpośrednio przez niego — stamtąd wyślesz książki, zmienisz ustawienia i zaktualizujesz firmware.</li>" +
+        "<li>Opcjonalnie: stuknij <b>Udostępnij → Dodaj do ekranu głównego</b>, żeby mieć szybką ikonę. Nadal zadziała tylko gdy iPhone jest w sieci czytnika.</li>" +
+        "</ol><p class=\"note2\">Gdy iPhone jest połączony z siecią czytnika, nie ma zwykłego internetu — to normalne. Po skończeniu wróć do swojej sieci domowej.</p>",
       backHome: "← Wróć do flower"
     }
   };
